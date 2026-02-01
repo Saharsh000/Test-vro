@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Vineetha 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ffd6ec,#e6ccff);
+    color:#5a4a6b;
+    overflow:hidden;
+}
+
+.slide{
+    display:none;
+    height:100vh;
+    padding:30px;
+    text-align:center;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.active{ display:flex; animation:fade 1s ease; }
+
+@keyframes fade{ from{opacity:0} to{opacity:1} }
+
+h1{
+    font-weight:500;
+    max-width:800px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    margin:10px;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+.yes{ background:#ff9ecb; color:white; }
+.no{ background:#bda0ff; color:white; }
+
+.sticker{
+    position:absolute;
+    font-size:24px;
+    animation:float 8s linear infinite;
+    opacity:0.8;
+}
+
+@keyframes float{
+    from{ transform:translateY(100vh); }
+    to{ transform:translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="slide active" id="s1"><h1 id="t1"></h1></div>
+<div class="slide" id="s2"><h1 id="t2"></h1></div>
+<div class="slide" id="s3"><h1 id="t3"></h1></div>
+
+<div class="slide" id="s4">
+    <h1>vinnamma, will you marry me and be my wife forever? 💍</h1>
+    <button class="yes" onclick="yesFlow()">Yes</button>
+    <button class="no" id="noBtn">No</button>
+</div>
+
+<div class="slide" id="s5"><h1 id="t5"></h1></div>
+<div class="slide" id="s6"><h1 id="t6"></h1></div>
+<div class="slide" id="s7"><h1 id="t7"></h1></div>
+<div class="slide" id="s8"><h1 id="t8"></h1></div>
+<div class="slide" id="s9"><h1 id="t9"></h1></div>
+<div class="slide" id="s10"><h1 id="t10"></h1></div>
+
+<script>
+let current=1;
+
+function show(n){
+    document.getElementById("s"+current).classList.remove("active");
+    current=n;
+    document.getElementById("s"+current).classList.add("active");
+}
+
+function typeText(id, text, speed=35){
+    let i=0;
+    const el=document.getElementById(id);
+    el.innerHTML="";
+    const interval=setInterval(()=>{
+        el.innerHTML+=text[i];
+        i++;
+        if(i>=text.length) clearInterval(interval);
+    },speed);
+}
+
+window.onload=()=>{
+    typeText("t1","Hi vineetha bangarammm 💗");
+    setTimeout(()=>{ show(2); typeText("t2","It’s been 3 beautiful months since we’ve been together, and every moment felt magical ✨"); },3500);
+    setTimeout(()=>{ show(3); typeText("t3","I just wanted to say how lucky I am to have you in my life 🥺"); },8000);
+}
+
+function yesFlow(){
+    show(5); typeText("t5","I knew you would accept :)) 💖");
+    setTimeout(()=>{ show(6); typeText("t6","I love youuu soooo much vinnamma 💞"); },3000);
+    setTimeout(()=>{ show(7); typeText("t7","Happy 3 month anniversary 🎉"); },6000);
+    setTimeout(()=>{ show(8); typeText("t8","Happy Valentine’s Day in advance 🌸"); },9000);
+    setTimeout(()=>{ show(9); typeText("t9","Saharsh is going to love you forever till his last breath ❤️"); },12000);
+    setTimeout(()=>{ show(10); typeText("t10","End credits to Saharsh who coded this with difficulty 😌💻"); },15000);
+}
+
+const noBtn=document.getElementById("noBtn");
+const texts=["Are you sure? 🥺","Think again 😏","Wrong choice 😂","Try Yes 💗","You misclicked","Be nice pls","Pink looks better","You know the answer 😌","Almost there","Press Yes naaa"];
+
+noBtn.addEventListener("click",()=>{
+    noBtn.innerText=texts[Math.floor(Math.random()*texts.length)];
+    setTimeout(()=>{ noBtn.innerText="No"; },1200);
+});
+
+setInterval(()=>{
+    const s=document.createElement("div");
+    s.className="sticker";
+    s.innerHTML=["💖","🌸","✨","💗","🦋"][Math.floor(Math.random()*5)];
+    s.style.left=Math.random()*100+"vw";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),8000);
+},500);
+</script>
+
+</body>
+</html>
